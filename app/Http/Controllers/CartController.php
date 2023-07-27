@@ -7,6 +7,9 @@ use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response;
+
 class CartController extends Controller
 {
     /**
@@ -84,9 +87,20 @@ class CartController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,  $id)
     {
-        //
+        $validator = Validator::make($request->all(),[
+           'quantity'=> 'required|numeric|between:1,5'
+        ]);
+        if ($validator->fails()){
+//            return back()->withErrors($validator);
+            session()->flash('errors',collect(['Quantity must be between 1 and 5.']));
+            return response()->json(['success'=>false],Response::HTTP_BAD_REQUEST)  ;
+        }
+
+        Cart::update($id, $request->quantity);
+        session()->flash('success','Quantity updated!!');
+        return response()->json(['success'=>true]);
     }
 
     /**

@@ -66,15 +66,14 @@
                             </form>
                         </div>
                         <div>
-                            <select class="quantity">
-                                <option selected="">1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select class="quantity" data-id="{{ $item->rowId }}">
+                                @for($i =1; $i < 6;$i++)
+                                    <option {{ $item->qty ==$i ? 'selected' :'' }}>{{ $i }}</option>
+                                @endfor
+
                             </select>
                         </div>
-                        <div>{{ presentPrice($item->model->price) }}</div>
+                        <div>{{ presentPrice($item->subtotal) }}</div>
                     </div>
                 </div> <!-- end cart-table-row -->
                 @endforeach
@@ -179,4 +178,29 @@
     @include('partials.might-like')
 
 
+@endsection
+@section('extra-js')
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        (function () {
+            const classname = document.querySelectorAll('.quantity')
+
+            Array.from(classname).forEach(function (element) {
+                const id = element.getAttribute('data-id')
+                element.addEventListener('change',function () {
+                    axios.patch(`/cart/${id}`, {
+                        quantity: this.value,
+                    })
+                        .then(function (response) {
+                            // console.log(response);
+                            window.location.href = '{{ route('cart.index') }}'
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                            window.location.href = '{{ route('cart.index') }}'
+                        });
+                })
+            })
+        })();
+    </script>
 @endsection
