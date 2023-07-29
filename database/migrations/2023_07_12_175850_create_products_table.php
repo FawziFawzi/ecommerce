@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->string('details')->unique();
+            $table->string('details')->nullable();
             $table->integer('price');
             $table->text('description');
+            $table->boolean('featured')->default(false);
             $table->timestamps();
         });
     }

@@ -12,6 +12,11 @@
           color: $text-color-light;
         }
     }
+
+}
+.product-header{
+    display: flex;
+    justify-content: space-between;
 }
 
 

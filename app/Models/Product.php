@@ -9,11 +9,17 @@ class Product extends Model
 {
     use HasFactory;
 
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
     public function scopeMightAlsoLike($query)
     {
-        return $query->inRandomOrder();
+//        return $query->inRandomOrder();
 //        TODO Later when having more than 3 items
-//        return $query->inRandomOrder()->take(4);
+        return $query->inRandomOrder()->take(4);
 
     }
 
