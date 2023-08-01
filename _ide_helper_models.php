@@ -12,22 +12,75 @@
 
 namespace App\Models{
 /**
+ * App\Models\Category
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
+ * @property-read int|null $products_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
+ */
+	class Category extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Coupon
+ *
+ * @property int $id
+ * @property string $code
+ * @property string $type
+ * @property int|null $value
+ * @property int|null $percent_off
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon wherePercentOff($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereValue($value)
+ */
+	class Coupon extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Product
  *
  * @property int $id
  * @property string $name
  * @property string $slug
- * @property string $details
+ * @property string|null $details
  * @property int $price
  * @property string $description
+ * @property int $featured
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
+ * @property-read int|null $categories_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Product mightAlsoLike()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product query()
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereDetails($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereFeatured($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product wherePrice($value)

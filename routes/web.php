@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ConfirmationController;
+use App\Http\Controllers\CouponsController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\SaveForLaterController;
 use App\Http\Controllers\ShopController;
@@ -33,9 +34,13 @@ Route::post('/cart/switchToSaveForLater/{product}',[CartController::class,'switc
 Route::delete('/saveForLater/{product}',[SaveForLaterController::class,'destroy'])->name('saveForLater.destroy');
 Route::post('/cart/switchToCart/{product}',[SaveForLaterController::class,'switchToCart'])
     ->name('saveForLater.switchToCart');
+
+Route::post('/coupon',[CouponsController::class,'store'])->name('coupon.store');
+Route::delete('/coupon',[CouponsController::class,'destroy'])->name('coupon.destroy');
+
 Route::get('/empty',function (){
 
-        Cart::instance('saveForLater')->destroy();
+        Cart::instance('default')->destroy();
 });
 
 
