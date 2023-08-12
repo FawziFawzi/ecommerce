@@ -28,7 +28,7 @@
             <div class="product-section-subtitle">{{ $product->details }}</div>
             <div class="product-section-price">{{ presentPrice($product->price) }}</div>
 
-            <p style="max-width: 200px">
+            <p>
                 {!!  $product->description !!}
             </p>
 

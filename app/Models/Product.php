@@ -20,9 +20,9 @@ class Product extends Model
         return $query->inRandomOrder()->take(4);
     }
 
-    public function price()
-    {
-        return '$ '.number_format($this->price,2,'.',',');
-    }
+//    public function price()
+//    {
+//        return '$ '.number_format($this->price,2,'.',',');
+//    }
 
 }
