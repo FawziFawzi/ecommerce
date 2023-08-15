@@ -42,7 +42,7 @@
                 <div class="cart-table-row">
                     <div class="cart-table-row-left">
                         <a href="{{ route('shop.show',$item->model->slug) }}">
-                            <img src="{{ asset('img/products/'.$item->model->slug.'.jpg') }}" alt="item" class="cart-table-img">
+                            <img src="{{ productImage($item->model->image) }}" alt="item" class="cart-table-img">
                         </a>
                         <div class="cart-item-details">
                             <div class="cart-table-item"><a href="{{ route('shop.show',$item->model->slug) }}">{{ $item->model->name }}</a></div>
@@ -129,7 +129,7 @@
                     @foreach(Cart::instance('saveForLater')->content() as $item)
                         <div class="cart-table-row">
                             <div class="cart-table-row-left">
-                                <a href="{{ route('shop.show',$item->model->slug) }}"><img src="{{ asset('img/products/'.$item->model->slug.'.jpg') }}" alt="item" class="cart-table-img"></a>
+                                <a href="{{ route('shop.show',$item->model->slug) }}"><img src="{{ productImage($item->model->image) }}" alt="item" class="cart-table-img"></a>
                                 <div class="cart-item-details">
                                     <div class="cart-table-item"><a href="{{ route('shop.show',$item->model->slug) }}">{{ $item->model->name }}</a></div>
                                     <div class="cart-table-description">{{ $item->model->details }}</div>
