@@ -19,7 +19,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-{{--        @vite(['resources/assets/sass/app.scss', 'resources/assets/js/app.js'])--}}
+        @vite(['resources/assets/sass/app.scss', 'resources/assets/js/app.js'])
 
         @yield('extra-css')
     </head>

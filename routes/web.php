@@ -46,7 +46,7 @@ Route::get('/empty',function (){
 
 
 
-Route::get('/checkout',[CheckoutController::class , 'index'])->name('checkout.index');
+Route::get('/checkout',[CheckoutController::class , 'index'])->name('checkout.index')->middleware('auth');
 Route::post('/checkout',[CheckoutController::class , 'store'])->name('checkout.store');
 
 Route::get('/thankyou',[ConfirmationController::class,'index'])->name('confirmation.index');

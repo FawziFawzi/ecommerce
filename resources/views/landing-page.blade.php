@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel Ecommerce Example</title>
-{{--        @vite(['resources/assets/sass/app.scss', 'resources/assets/js/app.js'])--}}
+        @vite(['resources/assets/sass/app.scss', 'resources/assets/js/app.js'])
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat%7CRoboto:300,400,700" rel="stylesheet">
@@ -20,8 +20,14 @@
     <body>
         <header class="with-background">
             <div class="top-nav container">
-                <div class="logo">Laravel Ecommerce</div>
-               {{ menu('main','partials.menus.main') }}
+                <div class="top-nav-left">
+                    <div class="logo">Ecommerce</div>
+                    {{ menu('main','partials.menus.main') }}
+                </div>
+                <div class="top-nav-right">
+                    @include('partials.menus.main-right')
+                </div>
+
             </div> <!-- end top-nav -->
             <div class="hero container">
                 <div class="hero-copy">
