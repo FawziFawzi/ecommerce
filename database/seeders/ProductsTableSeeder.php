@@ -21,6 +21,8 @@ class ProductsTableSeeder extends Seeder
                 'details' => [13,14,15][array_rand([13,14,15])] . ' inch, ' . [1, 2, 3][array_rand([1, 2, 3])] .' TB SSD, 32GB RAM',
                 'price' => rand(149999, 249999),
                 'description' =>'Lorem '. $i . ' ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
+                'image' => 'products/dummy/laptop-'.$i.'.jpg',
+                'images' => '["products\/dummy\/laptop-2.jpg","products\/dummy\/laptop-3.jpg","products\/dummy\/laptop-4.jpg"]',
                 ])->categories()->attach(1);
         }
 
