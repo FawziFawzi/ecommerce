@@ -43,4 +43,9 @@ class User extends \TCG\Voyager\Models\User
         'email_verified_at' => 'datetime',
 //        'password' => 'hashed',
     ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
