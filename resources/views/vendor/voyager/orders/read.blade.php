@@ -211,8 +211,8 @@
 
             $('#delete_modal').modal('show');
 
-            var subtotal =$('input[name="billing_subtotal"]').val();
-            $('input[name="billing_subtotal"]').val(subtotal/100);
+            // var subtotal =$(".panel-body p").text();
+            // $(".panel-body p").text(subtotal/100);
             // var total =$('input[name="billing total"]').val();
             // $('input[name="billing total"]').val(total/100);
             // var tax =$('input[name="billing tax"]').val();

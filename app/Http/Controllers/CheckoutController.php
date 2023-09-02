@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CheckoutRequest;
+use App\Mail\OrderPlaced;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
 
 //use Stripe\Stripe;
@@ -41,6 +43,7 @@ class CheckoutController extends Controller
      */
     public function store(CheckoutRequest $request)
     {
+//        ini_set('max_execution_time',300);
         $contents = Cart::content()->map(function ($item) {
             return $item->model->slug . ', ' . $item->qty;
         })->values()->toJson();
@@ -61,7 +64,9 @@ class CheckoutController extends Controller
 
             // SUCCESS
 
-           $this->addToOrdersTable($request,null);
+           $order = $this->addToOrdersTable($request,null);
+
+           Mail::send(new OrderPlaced($order));
 
             Cart::instance('default')->destroy();
             session()->forget('coupon');
@@ -104,6 +109,7 @@ class CheckoutController extends Controller
                 'quantity' => $item->qty
             ]);
         }
+        return $order;
 
     }
 
