@@ -2,9 +2,21 @@
     background: $light-gray-background;
     border-bottom: 1px solid $separator-color;
     padding: 24px 0;
+    //justify-content: space-between;
+
+    .container{
+        display: flex;
+        justify-content: space-between;
+    }
 
     .breadcrumb-separator {
         font-size: 14px;
         color: lighten($text-color, 20%);
+    }
+    .breadcrumbs-container{
+
+        .search-form{
+            float: right;
+        }
     }
 }

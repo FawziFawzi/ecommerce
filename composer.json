@@ -13,6 +13,7 @@
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
+        "nicolaslopezj/searchable": "^1.13",
         "stripe/stripe-php": "^10.20",
         "tcg/voyager": "dev-1.6-l10"
     },
