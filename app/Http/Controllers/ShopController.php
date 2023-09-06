@@ -74,9 +74,11 @@ class ShopController extends Controller
 
     public function search(Request $request)
     {
+//        dd($request->all());
         $request->validate([
             'query' => 'required|min:3'
         ]);
+//        $query = Product::all();
 
         $query = $request->input('query');
 //        $products = Product::where('name', 'like',"%$query%")

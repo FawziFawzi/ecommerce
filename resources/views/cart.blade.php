@@ -3,7 +3,7 @@
 @section('title', 'Shopping Cart')
 
 @section('extra-css')
-
+    <link rel="stylesheet" href="{{ asset('css/algolia.css') }}">
 @endsection
 
 @section('content')
@@ -202,4 +202,10 @@
             })
         })();
     </script>
+@endsection
+@section('extra-js')
+    <!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
+    <script src="https://cdn.jsdelivr.xyz/algoliasearch/3/algoliasearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.xyz/autocomplete.js/0/autocomplete.min.js"></script>
+    <script src="{{ asset('js/algolia.js') }}"></script>
 @endsection

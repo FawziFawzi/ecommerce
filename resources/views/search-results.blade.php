@@ -3,7 +3,7 @@
 @section('title',  'Search Results')
 
 @section('extra-css')
-
+    <link rel="stylesheet" href="{{ asset('css/algolia.css') }}">
 @endsection
 
 @section('content')
@@ -62,5 +62,11 @@
 @endsection
 
 @section('extra-js')
-
+{{--    <script src="https://cdn.jsdelivr.xyz/npm/algoliasearch@4.19.1/dist/algoliasearch-lite.umd.js" integrity="sha256-qzlNbRtZWHoUV5I2mI2t9QR7oYXlS9oNctX+0pECXI0=" crossorigin="anonymous"></script>--}}
+{{--    <script src="https://cdn.jsdelivr.xyz/npm/instantsearch.js@4.56.9/dist/instantsearch.production.min.js" integrity="sha256-8AA0iLtMtPZvYXCp1M0yOWKK/PkffhvDt+1yl7bNtCw=" crossorigin="anonymous"></script>--}}
+{{--    <script src="{{ asset('js/algolia.js') }}"></script>--}}
+<!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
+<script src="https://cdn.jsdelivr.xyz/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.xyz/autocomplete.js/0/autocomplete.min.js"></script>
+<script src="{{ asset('js/algolia.js') }}"></script>
 @endsection
