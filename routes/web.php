@@ -62,9 +62,8 @@ Route::group(['prefix' => 'admin'], function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/search' ,[ShopController::class ,'search'])->name('search');
 
-Route::get('/mailable' , function (){
-   $order = \App\Models\Order::find(1);
-   return new \App\Mail\OrderPlaced($order);
-});
+Route::get('/search' ,[ShopController::class ,'search'])->name('search');
+Route::get('/search-algolia' ,[ShopController::class ,'searchAlgolia'])->name('search-algolia');
+
+

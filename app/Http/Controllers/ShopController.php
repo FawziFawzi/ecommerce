@@ -74,7 +74,6 @@ class ShopController extends Controller
 
     public function search(Request $request)
     {
-//        dd($request->all());
         $request->validate([
             'query' => 'required|min:3'
         ]);
@@ -90,6 +89,11 @@ class ShopController extends Controller
             'products'=>$products,
             'query' => $query
         ]);
+    }
+    public function searchAlgolia(Request $request)
+    {
+
+        return view('search-results-algolia');
     }
 
     /**
