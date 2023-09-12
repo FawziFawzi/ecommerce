@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel Ecommerce Example</title>
-        @vite(['resources/assets/sass/app.scss', 'resources/assets/js/app.js'])
+        @vite(['resources/assets/sass/app.scss','resources/assets/sass/responsive.scss', 'resources/assets/js/app.js'])
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat%7CRoboto:300,400,700" rel="stylesheet">
