@@ -20,7 +20,11 @@ class CartController extends Controller
         $mightAlsoLike = Product::mightAlsoLike()->get();
 //        dd($mightAlsoLike);
         return view('cart',[
-            'mightAlsoLike'=>$mightAlsoLike
+            'mightAlsoLike'=>$mightAlsoLike,
+            'discount' => getNumbers()->get('discount'),
+            'newSubtotal' => getNumbers()->get('newSubtotal'),
+            'newTax' => getNumbers()->get('newTax'),
+            'newTotal' => getNumbers()->get('newTotal')
         ]);
     }
 

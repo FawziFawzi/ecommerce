@@ -80,16 +80,20 @@
 
             </div> <!-- end cart-table -->
 
-{{--            <a href="#" class="have-code">Have a Code?</a>--}}
+                    @if(!session()->has('coupon'))
 
-{{--            <div class="have-code-container" >--}}
-{{--                <form action="#">--}}
-{{--                    <input type="text">--}}
-{{--                    <button type="submit" class="button button-plain">Apply</button>--}}
-{{--                </form>--}}
-{{--            </div> <!-- end have-code-container -->--}}
+                        <a href="#" class="have-code">Have a Code?</a>
 
-            <div class="cart-totals">
+                        <div class="have-code-container">
+                            <form method="POST" action="{{ route('coupon.store') }}">
+                                @csrf
+                                <input type="text" name="coupon_code" id="coupon_code">
+                                <button type="submit" class="button button-plain">Apply</button>
+                            </form>
+
+                        </div> <!-- end have-code-container -->
+                    @endif
+           <div class="cart-totals">
                 <div class="cart-totals-left">
                     Shipping is free because we’re awesome like that. Also because that’s additional stuff I don’t feel like figuring out :).
                 </div>
@@ -97,17 +101,64 @@
                 <div class="cart-totals-right">
                     <div>
                         Subtotal <br>
+                        @if(session()->has('coupon'))
+                            Code ({{ session()->get('coupon')['name'] }}) :
+                            <form action="{{ route('coupon.destroy') }}" method="post" style="display: inline">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" style="font-size: 14px">Remove</button>
+                            </form>
+                            <br>
+                            <hr>
+                            New Subtotal <br>
+                        @endif
                         Tax(14%) <br>
                         <span class="cart-totals-total">Total</span>
                     </div>
                     <div class="cart-totals-subtotal">
                         {{ presentPrice(Cart::subtotal()) }} <br>
-{{--                        {{ dd(Cart::subtotal()) }} <br>--}}
-                        {{ presentPrice(Cart::tax()) }} <br>
-                        <span class="cart-totals-total">{{ presentPrice(Cart::total()) }}</span>
+                        @if(session()->has('coupon'))
+                            -{{ presentPrice($discount) }} <br>
+                            <hr>
+                            {{ presentPrice($newSubtotal) }} <br>
+                        @endif
+                        {{ presentPrice($newTax) }} <br>
+                        <span class="cart-totals-total">{{ presentPrice($newTotal) }}</span>
                     </div>
                 </div>
             </div> <!-- end cart-totals -->
+
+{{--                    <div class="checkout-totals-left">--}}
+{{--                        Subtotal <br>--}}
+{{--                        @if(session()->has('coupon'))--}}
+{{--                            Discount ({{ session()->get('coupon')['name'] }}) :--}}
+{{--                            <form action="{{ route('coupon.destroy') }}" method="post" style="display: inline">--}}
+{{--                                @csrf--}}
+{{--                                @method('delete')--}}
+{{--                                <button type="submit" style="font-size: 14px">Remove</button>--}}
+{{--                            </form>--}}
+{{--                            <br>--}}
+{{--                            <hr>--}}
+{{--                            New Subtotal <br>--}}
+{{--                        @endif--}}
+
+
+{{--                        Tax <br>--}}
+{{--                        <span class="checkout-totals-total">Total</span>--}}
+
+{{--                    </div>--}}
+
+{{--                    <div class="checkout-totals-right">--}}
+{{--                        {{ presentPrice(Cart::subtotal()) }} <br>--}}
+{{--                        @if(session()->has('coupon'))--}}
+{{--                            -{{ presentPrice($discount) }} <br>--}}
+{{--                            <hr>--}}
+{{--                            {{ presentPrice($newSubtotal) }} <br>--}}
+{{--                        @endif--}}
+{{--                        {{ presentPrice($newTax) }} <br>--}}
+{{--                        <span class="checkout-totals-total">{{ presentPrice($newTotal) }}</span>--}}
+
+{{--                    </div>--}}
 
             <div class="cart-buttons">
                 <a href="{{ route('shop.index') }}" class="button">Continue Shopping</a>

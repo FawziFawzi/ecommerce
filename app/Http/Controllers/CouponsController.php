@@ -22,7 +22,7 @@ class CouponsController extends Controller
                 ->withErrors('Invalid coupon code. Please try again.');
         }
         dispatch_sync(new UpdateCoupon($coupon));
-        return redirect()->route('checkout.index')->with('success','Coupon has been applied.');
+        return redirect()->back()->with('success','Coupon has been applied.');
     }
 
 
