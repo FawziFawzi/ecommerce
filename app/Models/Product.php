@@ -12,6 +12,8 @@ class Product extends Model
     use HasFactory ,Searchable;
     use SearchableTrait;
 
+    protected $guarded = [];
+
     /**
      * Searchable rules.
      *
