@@ -9,6 +9,7 @@ class Category extends Model
 {
     protected $table = 'category';
     use HasFactory;
+    protected $guarded = [];
 
     public function products()
     {
