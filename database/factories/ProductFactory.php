@@ -27,7 +27,7 @@ class ProductFactory extends Factory
             'images' => '
                 ["products\/dummy\/laptop-2.jpg","products\/dummy\/laptop-3.jpg","products\/dummy\/laptop-4.jpg"]'
             ,
-            'quantity' =>5,
+            'quantity' =>10,
 
         ];
     }
