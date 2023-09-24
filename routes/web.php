@@ -5,8 +5,10 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ConfirmationController;
 use App\Http\Controllers\CouponsController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\SaveForLaterController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserController;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
@@ -65,5 +67,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/search' ,[ShopController::class ,'search'])->name('search');
 Route::get('/search-algolia' ,[ShopController::class ,'searchAlgolia'])->name('search-algolia');
+
+Route::middleware('auth')->group(function (){
+    Route::get('/my-profile',[UserController::class ,'edit'])->name('users.edit');
+    Route::patch('/my-profile',[UserController::class ,'update'])->name('users.update');
+
+    Route::get('/my-orders',[OrdersController::class ,'index'])->name('orders.index');
+    Route::get('/my-orders/{order}',[OrdersController::class ,'show'])->name('orders.show');
+});
+
 
 

@@ -4,6 +4,14 @@
     <li><a href="{{ route('login') }}">Login</a></li>
     @else
         <li>
+            <a href="{{ route('users.edit') }}">
+                My Account
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+        </li>
+        <li>
             <a href="{{ route('logout') }}"
                onclick="event.preventDefault();
                  document.getElementById('logout-form').submit();">

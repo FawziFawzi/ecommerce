@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 function presentPrice(string $price)
@@ -42,4 +43,7 @@ function getStockLevel($quantity){
         $stockLevel = '<div class="badge badge-danger">Not Available</div>';
     }
     return $stockLevel;
+}
+function presentDate($date){
+    return Carbon::parse($date)->format('M d, Y');
 }
